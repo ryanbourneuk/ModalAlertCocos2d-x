@@ -2,7 +2,7 @@
 
 This class is the C++ rewrite for Cocos2d-x v3.13 of the rewrite for Cocos2d-objc v3 of the original ModalAlert class for the Objective-C Cocos2d-iPhone v2 game engine.
 
-It is available to view here, and is what this class is based upon: https://rombosblog.wordpress.com/2012/02/28/modal-alerts-for-cocos2d/
+The original ModalAlert class is available to view here, and is what this class is based upon: https://rombosblog.wordpress.com/2012/02/28/modal-alerts-for-cocos2d/
 
 It can be used as an alternative to the native alert view classes, specifically for iOS where the *UIAlertView* may not fit the look and style of your game.
 
@@ -41,6 +41,8 @@ ModalAlert::tell("Hello!", this, 30, [&]() {
   // code placed here is called when the ModalAlert has been killed!
 });
 ```
+
+This would present a single option alert view for the user. You can specify the message, the 'parent' which will the ModalAlert will be added to (such as the current view that is active), and the font size. Then, for each option, you can provide a block which will be run when the respective button has been pressed and the modal alert has disappeared.
 
 ## Questions that aren't frequently asked but may be in the future!
 
