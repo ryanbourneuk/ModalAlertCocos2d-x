@@ -33,9 +33,11 @@
 static const string & FONT = "fonts/arial.ttf";
 
 bool ModalAlert::init() {
-  if (!Node::init()) return false;
+  if (Node::init()) {
+    return true;
+  }
   
-  return true;
+  return false;
 }
 
 void ModalAlert::closeAlert(Sprite * dialog, Node * backing, Node * parent, const function<void()> &excBlk) {
