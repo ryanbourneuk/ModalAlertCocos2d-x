@@ -54,19 +54,19 @@ void ModalAlert::makeNode(const string msg, Node * parent, int fntSize, const st
   vSize = Director::getInstance()->getVisibleSize();
   ori = Director::getInstance()->getVisibleOrigin();
   
-  // Add backing layer
+  // Add backing layer.
   auto backing = LayerColor::create(Color4B(0, 0, 0, 0));
   this->addChild(backing);
   parent->addChild(this,1000);
   
-  // Create dialog box
+  // Create dialog box.
   auto dialog = Sprite::create("dialogBox.png");
   dialog->setPosition(PerPoint(.5, .5));
   dialog->setOpacity(255);
   
   Size dialogBoxSize = dialog->getContentSize();
   
-  // Create message label
+  // Create message label.
   auto message = Label::createWithTTF(msg, FONT, fntSize);
   message->setHorizontalAlignment(TextHAlignment::CENTER);
   message->setVerticalAlignment(TextVAlignment::CENTER);
@@ -100,7 +100,7 @@ void ModalAlert::makeNode(const string msg, Node * parent, int fntSize, const st
       opt1btn->setEnabled(false);
       opt2btn->setEnabled(false);
       
-      // Close alert
+      // Close alert.
       closeAlert(dialog,backing,parent,opt2blk);
     });
   }
@@ -119,13 +119,13 @@ void ModalAlert::makeNode(const string msg, Node * parent, int fntSize, const st
       opt2btn->setEnabled(false);
     }
     
-    // close alert
+    // Close alert.
     closeAlert(dialog,backing,parent,opt1blk);
   });
   
   backing->addChild(dialog,1);
   
-  // Animate in layers
+  // Animate in layers.
   backing->runAction(FadeTo::create(.5, 127.5));
   dialog->setScale(0);
   dialog->runAction(EaseSineInOut::create(EaseBackOut::create(ScaleTo::create(.5, 1))));
