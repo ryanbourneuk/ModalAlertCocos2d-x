@@ -32,7 +32,7 @@ Once you have added the class files and the sprite files to your project, you ne
 
   1. In *cocos2d.h*, you need to add `#include "ui/CocosGUI.h"`. This will allow you to access the ui namespace from anywhere you include *cocos2d.h*. You can probably only include the *CocosGUI.h* file in the *ModalAlert* class, however by placing it within *cocos2d.h* you can use it anywhere!
   2. In *ModalAlert.cpp*, you need to change the font constant towards the top of the file to point to your font of choosing. If you have a reference to your font which you use elsewhere in your project (such as a global variables class etc.) you can include your class and use the prexisting reference instead.
-  3. If you have included the box sprite within a spritesheet, you will need to change line 61 to use `createWithSpriteFrameName()` instead of `create()`.
+  3. If you have included the box sprite within a spritesheet instead of using separate sprites, you will need to change line 61 to use `createWithSpriteFrameName()` instead of `create()`.
   
 You should then be able to include the *ModalAlert.h* file where you want to use a *ModalAlert*, and present them! An example would be:
 
@@ -42,7 +42,7 @@ ModalAlert::tell("Hello!", this, 30, [&]() {
 });
 ```
 
-This would present a single option alert view for the user. You can specify the message, the 'parent' which will the ModalAlert will be added to (such as the current view that is active), and the font size. Then, for each option, you can provide a block which will be run when the respective button has been pressed and the modal alert has disappeared.
+This would present a single option alert view for the user. You can specify the message, the 'parent' which will the ModalAlert will be added to (such as the current view that is active), and the font size. Then, for each option, you can provide a block which will be run when the respective button has been pressed and the modal alert has disappeared. If you don't have code you want to execute when an option has been pressed, pass `nullptr` instead of a code block.
 
 ## Questions that aren't frequently asked but may be in the future!
 
@@ -53,6 +53,19 @@ It has been tested and used extensively on iOS and Android, and should work on o
 ### How do I add sound effects for when buttons are pressed?
 
 Include the audio engine / helper class which you use elsewhere into the *ModalAlert* class, and then play a sound effect in both of the event handlers for the two buttons. Be sure to place them after the initial return statement, so it is only played when the touch event ends on the button.
+
+Although it may seem tempting, **don't place them in the block you pass for when an option has been pressed!** The block is delayed until the alert has disappeared and will be really out of time with when the button was really pressed!
+
+### I can still press on my background objects behind the alert! Explain! EXPLAIN!!
+
+The ModalAlert does not swallow touches and this is left up to the individual to decide how they want to handle this. My personal choice is to disable any on screen interactive UI elements as the alert is presented. I do this personally by calling a function which will disable all of the buttons on the screen. I then call the function again to re-enable the buttons when the alert disappears. An example would be:
+
+```cpp
+// disable menu buttons here!
+ModalAlert::tell("Hello!", this, 30, [&]() {
+  // enable menu buttons here, as the alert view will be gone at this point!
+});
+```
 
 ### Can I add more options to the ModalAlert view?
 
