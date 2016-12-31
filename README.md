@@ -77,4 +77,4 @@ Two spaces looks nicer than four spaces :)
 
 ### How can I ever repay you for this amazingness?!
 
-If this has been useful to you, then great! Feel free to send me a tweet [@ryanbournedev]("https://twitter.com/ryanbournedev") to let me know! If you really really liked it and a nice tweet just won't do, then feel free to help fund my hot chocolate cravings here: https://www.paypal.me/ryanbourne - although donations are not necessary! :) 
+If this has been useful to you, then great! Feel free to send me a tweet [@ryanbournedev](https://twitter.com/ryanbournedev) to let me know! If you really really liked it and a nice tweet just won't do, then feel free to help fund my hot chocolate cravings here: https://www.paypal.me/ryanbourne - although donations are not necessary! :) 
