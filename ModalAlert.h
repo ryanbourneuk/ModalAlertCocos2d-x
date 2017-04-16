@@ -6,8 +6,8 @@
 //
 //  Originally sourced from https://rombosblog.wordpress.com/2012/02/28/modal-alerts-for-cocos2d/.
 //
-//  Copyright (c) 2016 Ryan Bourne. All rights reserved.
-//  https://www.ryanbournedev.wordpress.com
+//  Copyright (c) 2016 - 2017 Ryan Bourne. All rights reserved.
+//  https://www.ryanbournedev.wordpress.com & https://twitter.com/ryanbourne28
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -41,18 +41,17 @@ class ModalAlert: public Node {
 public:
   virtual bool init();
   
-  void closeAlert(Sprite * dialog, Node * backing, Node * parent, const function<void()> &excBlk);
+  void closeAlert(Sprite* dialog, Node* backing, Node* parent, const function<void()> &excBlk);
   
-  void makeNode(const string msg, Node * parent, int fntSize, const string opt1, const function<void()> &opt1blk, const string opt2, const function<void()> &opt2blk);
+  void makeNode(string msg, string boxFileName, Node* parent, int fntSize, string fntName, const function<void()> &btnPressed, string opt1, const function<void()> &opt1blk, string opt2, const function<void()> &opt2blk);
   
-  // implement the "static create()" method manually
   CREATE_FUNC(ModalAlert);
   
-  static Node * ask(const string question, Node * parent, int fntSize, const function<void()> &yes, const function<void()> &no);
+  static Node* ask(string question, string boxFileName, Node* parent, int fntSize, string fntName, const function<void()> &btnPressed, const function<void()> &yes, const function<void()> &no);
   
-  static Node * confirm(const string question, Node * parent, int fntSize, const function<void()> &ok, const function<void()> &cancel);
+  static Node* confirm(string question, string boxFileName, Node* parent, int fntSize, string fntName, const function<void()> &btnPressed, const function<void()> &ok, const function<void()> &cancel);
   
-  static Node * tell(const string statement, Node * parent, int fntSize, const function<void()> &ok);
+  static Node* tell(string statement, string boxFileName, Node* parent, int fntSize, string fntName, const function<void()> &btnPressed, const function<void()> &ok);
   
   Vec2 PerPoint(float x, float y);
   
